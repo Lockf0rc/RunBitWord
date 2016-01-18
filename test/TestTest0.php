@@ -62,7 +62,6 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $this->assertEquals('DEFINITION OF WORD',$bitArray->getBitList()[0]->getDefinition());
         $this->assertEquals('ANOTHER',$bitArray->getBitList()[0]->getSynonym());
 
-
         $this->assertEquals('one',$bitArray->getBitList()[0]->getBitArray()[0]);
         $this->assertEquals('two',$bitArray->getBitList()[0]->getBitArray()[1]);
         $this->assertEquals('three',$bitArray->getBitList()[0]->getBitArray()[2]);
@@ -103,10 +102,14 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $fac=new BitFactory();
         $TEST=new Tester();
         $fac->createBits('../W.csv');
-        $TEST->addList($fac->getBits());
+        $TEST->addList($fac);
 
-        $TEST->intitTestOptions($TEST);
+       //
+        $this->assertNotEmpty($TEST);
+        $this->assertEquals(11,count($TEST->getBitList()));
 
+       //todo add test:$TEST->intitTestOptions()
     }
+
 
 }
