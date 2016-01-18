@@ -14,11 +14,11 @@ class Tester extends BitArray
     const OptionNumber=4;
     const DisplayPerTest=3;
     public $optionDisplay;
-    protected $mapArray;
+    protected $BITOBJ;
     protected $SampleSize;
 
     public function intitTestOptions(IBitArray $bitsSample){
-        $this->mapArray = clone $this->bitList;
+        $this->BITOBJ = clone $bitsSample;
         $this->SampleSize=count($bitsSample->getBitList());
 
         $this->loadBits($bitsSample);
@@ -101,8 +101,8 @@ class Tester extends BitArray
 
     public function html(){
         #print_r($this->optionDisplay);
-        print_r($this->mapArray);
-
+        print_r($this->BITOBJ);
+        //todo implement html select boxes from choices.
     }
 }
 
