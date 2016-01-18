@@ -40,8 +40,8 @@ class Tester extends BitArray
 
 
     protected function addSaltKeys(IBitArray $bits){
-        $ubits=clone $bits;
-        $ubits->rewind();
+        $ubits= clone $bits;
+        $ubits->reset();
         $container=$ubits->getBitList();
 
 
