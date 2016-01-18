@@ -11,21 +11,18 @@ namespace Lockf0rc\Bitwords;
 
 class Tester extends BitArray
 {
-    protected $mapArray;
-    public $optionDisplay;
     const OptionNumber=4;
     const DisplayPerTest=3;
+    public $optionDisplay;
+    protected $BITOBJ;
     protected $SampleSize;
 
     public function intitTestOptions(IBitArray $bitsSample){
-        $this->mapArray=$this->bitList;
+        $this->BITOBJ = clone $bitsSample;
         $this->SampleSize=count($bitsSample->getBitList());
 
         $this->loadBits($bitsSample);
         $this->addSaltKeys($bitsSample);
-        $this->html();
-       # $this->display();
-
 
     }
     public function loadBits(IBitArray $bits)
@@ -92,20 +89,20 @@ class Tester extends BitArray
         return $this->optionDisplay;
     }
 
-    public function getSampleSize()
-    {
-        return $this->SampleSize;
-    }
-
     public function setOptionDisplay($optionDisplay)
     {
         $this->optionDisplay = $optionDisplay;
     }
 
+    public function getSampleSize()
+    {
+        return $this->SampleSize;
+    }
+
     public function html(){
         #print_r($this->optionDisplay);
-        print_r($this->mapArray);
-
+        print_r($this->BITOBJ);
+        //todo implement html select boxes from choices.
     }
 }
 

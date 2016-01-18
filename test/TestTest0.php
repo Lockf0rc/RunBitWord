@@ -12,6 +12,7 @@ use Lockf0rc\Bitwords\BitFactory;
 use Lockf0rc\Bitwords\BitWord;
 use Lockf0rc\Bitwords\BitArray;
 use Lockf0rc\Bitwords\Tester;
+
 class TestTest0 extends PHPUnit_Framework_TestCase{
 
     public function testBitWord()
@@ -43,7 +44,7 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $fac=new BitFactory();
         $fac->createBits('../W.csv');
         #TEST
-        $this->assertEquals(11,count($fac->getBits()));
+        $this->assertEquals(11, count($fac->getBits()));
         $this->assertNotEmpty($fac->getBits());
 
     }
@@ -107,6 +108,10 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
        //
         $this->assertNotEmpty($TEST);
         $this->assertEquals(11,count($TEST->getBitList()));
+
+        //todo fix  error: in_array() expects parameter 2 to be array, null given
+        //todo test addsaltkeys()
+        $this->assertEquals(11, count($TEST->intitTestOptions($TEST)));
 
        $this->assertNotEmpty($TEST->intitTestOptions($TEST));
     }
