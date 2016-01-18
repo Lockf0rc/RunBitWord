@@ -114,7 +114,7 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         //todo fix  error: in_array() expects parameter 2 to be array, null given
 
 
-        $this->assertEquals(3, $TEST::DisplayWordsPerTest);
+        $this->assertEquals(3, $TEST::DisplayPerTest);
         $this->assertEquals(4, $TEST::OptionNumber);
 
         $TEST->loadBits($TEST);
