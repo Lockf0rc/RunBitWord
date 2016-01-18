@@ -110,8 +110,12 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
        //
         $this->assertNotEmpty($TEST);
         $this->assertEquals(11,count($TEST->getBitList()));
+        $this->assertEquals(11, count($TEST->getBitList()));
 
-        $this->assertEquals(0, count($TEST->intitTestOptions($bitArray)));
+        //todo fix  error: in_array() expects parameter 2 to be array, null given
+        //todo test addsaltkeys()
+        $this->assertEquals(11, count($TEST->intitTestOptions($TEST)));
+
     }
 
 
