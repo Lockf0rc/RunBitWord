@@ -108,7 +108,7 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $this->assertNotEmpty($TEST);
         $this->assertEquals(11,count($TEST->getBitList()));
 
-       //todo add test:$TEST->intitTestOptions()
+       $this->assertNotEmpty($TEST->intitTestOptions($TEST));
     }
 
 
