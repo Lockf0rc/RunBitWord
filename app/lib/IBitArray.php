@@ -16,5 +16,6 @@ abstract class IBitArray implements \Iterator
     abstract function add(BitWord $word);
     abstract function addList(BitFactory $bits);
     abstract public function getBitList();
+    abstract public function reset();
 
 }
