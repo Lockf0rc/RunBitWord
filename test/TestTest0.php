@@ -8,40 +8,16 @@
 
 require '../vendor/autoload.php';
 
+use Lockf0rc\Bitwords\BitArray;
 use Lockf0rc\Bitwords\BitFactory;
 use Lockf0rc\Bitwords\BitWord;
-use Lockf0rc\Bitwords\BitArray;
 use Lockf0rc\Bitwords\Tester;
 
 class TestTest0 extends PHPUnit_Framework_TestCase{
 
-    public function testBitWord()
+    public function testFactory()
     {
-        #sample array
-         $ArraySample= array('one','two','three');
-
-         $bitObj=new BitWord();
-         $bitObj->setWord('WORD');
-         $bitObj->setDefinition("DEFINITION OF WORD");
-         $bitObj->setSynonym("ANOTHER");
-         $bitObj->setKey(0);
-         $bitObj->setBitArray($ArraySample);
-
-        #TEST
-         $this->assertEquals('WORD',$bitObj->getWord());
-         $this->assertEquals("DEFINITION OF WORD",$bitObj->getDefinition());
-         $this->assertEquals("ANOTHER",$bitObj->getSynonym());
-         $this->assertEquals("0",$bitObj->getKey());
-         $this->assertEquals(0,$bitObj->getKey());
-         $this->assertEquals('one',$bitObj->getBitArray()[0]);
-         $this->assertEquals('two',$bitObj->getBitArray()[1]);
-         $this->assertEquals('three',$bitObj->getBitArray()[2]);
-        return $bitObj;
-
-    }
-
-    public function testFactory(){
-        $fac=new BitFactory();
+        $fac = new BitFactory();
         $fac->createBits('../W.csv');
         #TEST
         $this->assertEquals(11, count($fac->getBits()));
@@ -68,6 +44,32 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $this->assertEquals('three',$bitArray->getBitList()[0]->getBitArray()[2]);
         return $bitArray;
     }
+
+    public function testBitWord()
+    {
+        #sample array
+        $ArraySample = array('one', 'two', 'three');
+
+        $bitObj = new BitWord();
+        $bitObj->setWord('WORD');
+        $bitObj->setDefinition("DEFINITION OF WORD");
+        $bitObj->setSynonym("ANOTHER");
+        $bitObj->setKey(0);
+        $bitObj->setBitArray($ArraySample);
+
+        #TEST
+        $this->assertEquals('WORD', $bitObj->getWord());
+        $this->assertEquals("DEFINITION OF WORD", $bitObj->getDefinition());
+        $this->assertEquals("ANOTHER", $bitObj->getSynonym());
+        $this->assertEquals("0", $bitObj->getKey());
+        $this->assertEquals(0, $bitObj->getKey());
+        $this->assertEquals('one', $bitObj->getBitArray()[0]);
+        $this->assertEquals('two', $bitObj->getBitArray()[1]);
+        $this->assertEquals('three', $bitObj->getBitArray()[2]);
+        return $bitObj;
+
+    }
+
     public function testBitArrayItterator(){
         #init BitWord object from previous test of bit.
         $bitword=$this->testBitWord();
@@ -110,10 +112,18 @@ class TestTest0 extends PHPUnit_Framework_TestCase{
         $this->assertEquals(11,count($TEST->getBitList()));
 
         //todo fix  error: in_array() expects parameter 2 to be array, null given
-        //todo test addsaltkeys()
-        $this->assertEquals(11, count($TEST->intitTestOptions($TEST)));
 
-       $this->assertNotEmpty($TEST->intitTestOptions($TEST));
+
+        $this->assertEquals(3, $TEST::DisplayWordsPerTest);
+        $this->assertEquals(4, $TEST::OptionNumber);
+
+        $TEST->loadBits($TEST);
+        $this->assertEquals(3, count($TEST->getOptionDisplay()));
+
+
+        #  $TEST->loadBits($TEST);
+        #       $this->assertEquals(3,count($TEST->getOptionDisplay()));
+
     }
 
 

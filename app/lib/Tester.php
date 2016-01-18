@@ -13,7 +13,7 @@ class Tester extends BitArray
 {
     const OptionNumber=4;
     const DisplayPerTest=3;
-    public $optionDisplay;
+    public $DisplayedWordsObjArray;
     protected $BITOBJ;
     protected $SampleSize;
 
@@ -31,7 +31,7 @@ class Tester extends BitArray
         $rand_keys=array_rand($container,Tester::DisplayPerTest);
         for($dispN=0;$dispN<Tester::DisplayPerTest;$dispN++) {
 
-            $this->optionDisplay[] = $container[$rand_keys[$dispN]];
+            $this->DisplayedWordsObjArray[] = $container[$rand_keys[$dispN]];
         }
     }
 
@@ -86,12 +86,12 @@ class Tester extends BitArray
 
     public function getOptionDisplay()
     {
-        return $this->optionDisplay;
+        return $this->DisplayedWordsObjArray;
     }
 
     public function setOptionDisplay($optionDisplay)
     {
-        $this->optionDisplay = $optionDisplay;
+        $this->DisplayedWordsObjArray = $optionDisplay;
     }
 
     public function getSampleSize()
