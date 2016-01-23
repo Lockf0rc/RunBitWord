@@ -17,26 +17,10 @@ class BitWord
     public $definition ;
     public $synonym;
     public $key;
-    public $bitArray;
 
     public function getWord()
     {
         return $this->word;
-    }
-
-    public function getDefinition()
-    {
-        return $this->definition;
-    }
-
-    public function getSynonym()
-    {
-        return $this->synonym;
-    }
-
-    public function getBitArray()
-    {
-        return $this->bitArray;
     }
 
     public function setWord($word)
@@ -44,9 +28,19 @@ class BitWord
         $this->word = $word;
     }
 
+    public function getDefinition()
+    {
+        return $this->definition;
+    }
+
     public function setDefinition($definition)
     {
         $this->definition = $definition;
+    }
+
+    public function getSynonym()
+    {
+        return $this->synonym;
     }
 
     public function setSynonym($synonym)
@@ -54,10 +48,6 @@ class BitWord
         $this->synonym = $synonym;
     }
 
-    public function setBitArray($bit)
-    {
-        $this->bitArray= $bit;
-    }
 
     public function getKey()
     {

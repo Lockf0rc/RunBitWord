@@ -4,6 +4,8 @@
  * User: Miguel
  * Date: 1/1/2016
  * Time: 9:44 AM
+ *
+ * Use Factory to create multiple Bitword objects.
  */
 
 namespace Lockf0rc\Bitwords;
@@ -15,10 +17,6 @@ public $bits;
  public function createBits($csv){
      #load csv to an array
      $local=csv_to_array($csv);
-
-
-
-
          foreach($local as $singleBit ){
              $container=array_values($singleBit);
             $T=new BitWord();
@@ -29,12 +27,19 @@ public $bits;
             $this->bits[]=$T;
             unset($T);
          }
-
-
  }
     public function getBits()
     {
         #return BitWord array
         return $this->bits;
+    }
+
+    public function createBitArrayObj()
+    {
+        $self = $this;
+        $Bitarray = new BitArray();
+        $Bitarray->addList($self);
+        return $Bitarray;
+
     }
 }

@@ -9,100 +9,59 @@
 namespace Lockf0rc\Bitwords;
 
 
-class Tester extends BitArray
+use Lockf0rc\Bitwords\Interf\IBitArray;
+use Lockf0rc\Bitwords\Interf\ITestSettings;
+
+/**
+ * Class Tester
+ * @package Lockf0rc\Bitwords
+ */
+class Tester # extends
 {
-    const OptionNumber=4;
-    const DisplayPerTest=3;
-    public $optionDisplay;
-    protected $BITOBJ;
-    protected $SampleSize;
 
-    public function intitTestOptions(IBitArray $bitsSample){
-        $this->BITOBJ = clone $bitsSample;
-        $this->SampleSize=count($bitsSample->getBitList());
+    protected $arrangebits;
 
-        $this->loadBits($bitsSample);
-        $this->addSaltKeys($bitsSample);
+    protected $render;
 
-    }
-    public function loadBits(IBitArray $bits)
+    //TODO create a proper interface for injection instead of Arrangebit Class
+
+    public function __construct(ITestSettings $options, IBitArray $bitArray, BitListRender $render)
     {
-        $container=$bits->getBitList();
-        $rand_keys=array_rand($container,Tester::DisplayPerTest);
-        for($dispN=0;$dispN<Tester::DisplayPerTest;$dispN++) {
+        $this->arrangebits = new ArrangeBits($options, $bitArray);
+        $this->render = $render;
+        $render->setBitArray($bitArray);
+    }
 
-            $this->optionDisplay[] = $container[$rand_keys[$dispN]];
-        }
+    public function display()
+    {
+        $this->render->display();
+    }
+
+    public function getArrangebits()
+    {
+        return $this->arrangebits;
     }
 
 
-    protected function addSaltKeys(IBitArray $bits){
-        $ubits= clone $bits;
-        $ubits->reset();
-        $container=$ubits->getBitList();
-
-
-        //ITTERATE FOR ALL SAMPLE WORDS LOADED
-        while ($ubits->valid()){
-            $key=$ubits->key();
-                    //GENERATE RANDOME $OPTION KEY INDEX
-            for($opN=0;$opN<Tester::OptionNumber;$opN++){
-
-                  #TEST
-                //Add self
-                do{
-                    $rand= rand(0,($this->SampleSize -1));
-                    $is_inBitList=(in_array($rand,$ubits->current()->getBitArray()))?true:false;
-                    $PickingRandNumber=(($rand==$key)or($is_inBitList))?true:false;
-                    $debug=function()use($key,$opN,$rand,$is_inBitList){ echo '   '.$key." optionNumber=$opN"."(key{$key}==rand{$rand})?:{($key==$rand)}"." is_inBitList=$is_inBitList"."\n";};
-                   // Ouput results inside of the do loop
-                    //   $debug();
-                }while(($PickingRandNumber===true));
-
-                //output results after loop
-                #$debug();
-
-                if(!($rand===$key)){
-                 #THIS CHECK INSURES THAT WE DO NOT HAVE MORE THAN ONE TRUE ANSWER IN OUR OPTION INDEX BITARRAY
-                    $ubits->store($container[$key],$rand);
-                }
-
-
-            }
-            $ubits->next();
-
-
-        }
-
-    }
     public function __clone()
     {
-
         // Force a copy of this->object, otherwise
         // it will point to same object.
-
-
     }
 
-    public function getOptionDisplay()
-    {
-        return $this->optionDisplay;
-    }
 
-    public function setOptionDisplay($optionDisplay)
+    public function getSampleSizeCount()
     {
-        $this->optionDisplay = $optionDisplay;
-    }
 
-    public function getSampleSize()
-    {
-        return $this->SampleSize;
     }
 
     public function html(){
-        #print_r($this->optionDisplay);
-        print_r($this->BITOBJ);
-        //todo implement html select boxes from choices.
+        $doc = <<<mtext
+        <h1>HTML START NOW</h1>
+        <h1>HTML START NOW</h1>
+mtext;
+        return $doc;
+
     }
 }
 

@@ -6,14 +6,16 @@
  * Time: 6:24 PM
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
 
 
-Abstract class IListLogic
+interface IListLogic
 {
-    protected $ListArray;
 
-    public abstract function isUnique();
+    /**
+     * @return bool
+     */
+    public function isUnique($value, $rand);
 
 
 }

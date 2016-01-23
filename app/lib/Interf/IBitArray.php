@@ -6,16 +6,19 @@
  * Time: 8:34 PM
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
 
-abstract class IBitArray implements \Iterator
+use Lockf0rc\Bitwords\BitFactory;
+use Lockf0rc\Bitwords\BitWord;
+
+abstract class IBitArray extends IteratorPlus
 {
-    var $bitList;
-    abstract function store(BitWord $bit,$bitArray);
-    abstract function display($n=null);
+    protected $bitList;
+
+    abstract function store(BitWord $bit, $TestKeys);
     abstract function add(BitWord $word);
     abstract function addList(BitFactory $bits);
     abstract public function getBitList();
-    abstract public function reset();
+
 
 }

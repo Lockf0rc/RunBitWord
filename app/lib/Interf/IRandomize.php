@@ -9,11 +9,11 @@
  * 2.Verify it is a unique list
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
 
 
-abstract class IRandomize extends IListLogic
+abstract class IRandomize implements IListLogic
 {
-    public abstract function scramble(\Iterator &$ArrayTypeOBJ);
+    public abstract function scramble(IteratorPlus $ArrayTypeOBJ);
 
 }

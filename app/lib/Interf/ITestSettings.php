@@ -6,7 +6,7 @@
  * Time: 7:55 PM
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
 
 
 abstract class ITestSettings

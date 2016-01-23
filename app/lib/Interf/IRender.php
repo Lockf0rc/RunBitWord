@@ -6,10 +6,13 @@
  * Time: 7:42 PM
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
 
 
-interface IRender
+abstract class IRender
 {
-    public function display();
+    protected $renderObject;
+
+    abstract function display();
+
 }

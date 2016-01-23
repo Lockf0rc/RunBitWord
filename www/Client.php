@@ -8,20 +8,17 @@
 include_once '..\vendor\autoload.php';
 
 use Lockf0rc\Bitwords\BitFactory;
+use Lockf0rc\Bitwords\BitListRender;
 use Lockf0rc\Bitwords\Tester;
-use Lockf0rc\Bitwords\BitArray;
-$A=new BitArray();
-$fac=new BitFactory();
-$TEST=new Tester();
+use Lockf0rc\Bitwords\TestSettings;
 
+$fac = new BitFactory();
 $fac->createBits('../W.csv');
-$TEST->addList($fac->getBits());
+$bitArray = $fac->createBitArrayObj();
+$options = new TestSettings(4, 10);
+$render = new BitListRender();
+$TEST = new Tester($options, $bitArray, $render);
 
-$TEST->intitTestOptions($TEST);
-
-
-
-
-
+$TEST->display();
 #
 

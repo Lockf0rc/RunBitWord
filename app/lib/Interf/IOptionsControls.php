@@ -6,7 +6,8 @@
  * Time: 5:54 PM
  */
 
-namespace Lockf0rc\Bitwords;
+namespace Lockf0rc\Bitwords\Interf;
+
 /**
  * 1. Controls Test Size $var
  * 2.Controls Choices/Options to Display $var

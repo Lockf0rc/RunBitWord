@@ -7,13 +7,13 @@
  */
 namespace Lockf0rc\Bitwords;
 include_once "csv_to_array-php.php";
-use Lockf0rc\Bitwords\BitWord;
+use Lockf0rc\Bitwords\Interf\IBitArray;
+
 class BitArray extends IBitArray
 {
     #FIELDS
-    public $bitList;
-    ########################################################
-    //\ITerator http://php.net/manual/en/class.iterator.php
+
+
     private $iteratorPosition = 0;
     public function __construct() {
         $this->iteratorPosition = 0;
@@ -37,34 +37,37 @@ class BitArray extends IBitArray
        // var_dump(__METHOD__);
         return $this->iteratorPosition;
     }
-    function next() {
-        //var_dump(__METHOD__);
-        ++$this->iteratorPosition;
-    }
+
     function valid() {
         //var_dump(__METHOD__);
         return isset($this->bitList[$this->iteratorPosition]);
+    }
+
+    public function count()
+    {
+        return count($this->getBitList());
     }
 ####################################################
 
     //END OF \ITERATOR Interface
 
+    public function getBitList()
+    {
+        return $this->bitList;
+    }
+
    public function store(BitWord $bit,$items){
-     $bit->setBitArray($items);
+       $bit->setTestKeys($items);
     }
 
-    function display($n=null){
-        if($n===null){
-                #debug
-                print_r($this->bitList);
-
-            #throw new \Exception('NO INT(index) Supplied');
+    function addList(BitFactory $fac)
+    {
+        $bitlist = $fac->getBits();
+        foreach ($bitlist as $bit) {
+            $this->add($bit);
         }
-        elseif(is_int($n)){
-            print_r($this->bitList[$n]);
-        }
-
     }
+
     function add(BitWord $bitWord)
     {
         $bitWord->setKey($this->key());
@@ -72,14 +75,9 @@ class BitArray extends IBitArray
         $this->next();
     }
 
-   function addList(BitFactory $fac){
-       $bitlist=$fac->getBits();
-        foreach($bitlist as $bit){
-            $this->add($bit);
-        }
-    }
-    public function getBitList()
+    function next()
     {
-        return $this->bitList;
+        //var_dump(__METHOD__);
+        ++$this->iteratorPosition;
     }
 }
