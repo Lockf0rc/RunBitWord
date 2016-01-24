@@ -6,9 +6,12 @@
  * Time: 9:18 AM
  */
 namespace Lockf0rc\Bitwords;
+
+use Lockf0rc\Bitwords\Interf\IBitArray;
+
 include_once "csv_to_array-php.php";
 
-class BitArray extends Tester
+class BitArray extends IBitArray
 {
     #FIELDS
 
