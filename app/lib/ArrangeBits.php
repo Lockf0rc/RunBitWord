@@ -92,14 +92,5 @@ class ArrangeBits
         $this->settings = $settings;
     }
 
-    public function isUnique($value, $rand)
-    {
-        if (!($value === $rand)) {
-            #THIS CHECK INSURES THAT WE DO NOT HAVE MORE THAN ONE TRUE ANSWER IN OUR OPTION INDEX BITARRAY
-            return true;
-        } else {
-            return false;
-        }
 
-    }
 }
