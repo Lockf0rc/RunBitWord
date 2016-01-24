@@ -10,9 +10,8 @@ namespace Lockf0rc\Bitwords;
 
 
 use Lockf0rc\Bitwords\Interf\IBitArray;
-use Lockf0rc\Bitwords\Interf\IRender;
 
-class BitListRender extends IRender
+class BitListRender extends Tester
 {
 
 

@@ -7,9 +7,8 @@
  */
 namespace Lockf0rc\Bitwords;
 include_once "csv_to_array-php.php";
-use Lockf0rc\Bitwords\Interf\IBitArray;
 
-class BitArray extends IBitArray
+class BitArray extends Tester
 {
     #FIELDS
 

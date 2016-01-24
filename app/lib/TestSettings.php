@@ -9,9 +9,7 @@
 namespace Lockf0rc\Bitwords;
 
 
-use Lockf0rc\Bitwords\Interf\ITestSettings;
-
-class TestSettings extends ITestSettings
+class TestSettings extends Tester
 {
     public function __construct($Display, $QuizSize)
     {
