@@ -19,6 +19,8 @@ $options = new TestSettings(4, 10);
 $render = new BitListRender();
 $TEST = new Tester($options, $bitArray, $render);
 
-$TEST->display();
+$TEST->getArrangebits()->scramble();
+print_r($TEST->getArrangebits()->getComp());
+print_r($TEST->getArrangebits()->randKey());
 #
 

@@ -15,7 +15,7 @@ interface IListLogic
     /**
      * @return bool
      */
-    public function isUnique($value, $rand);
+    # public function isUnique($value, $rand);
 
 
 }

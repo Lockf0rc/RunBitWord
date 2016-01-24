@@ -8,25 +8,27 @@
 
 namespace Lockf0rc\Bitwords\Interf;
 
+use Lockf0rc\Bitwords\BitWord;
+
 abstract class IBitComparitor implements IListLogic
 {
-    protected $comparitor;
+    protected $comparitor = array();
 
-    public function isUnique($value, $rand)
-    {
-        $this->setComparitor($value);
-        $bool = (!(in_array($this->getComparitor(), $rand)));
-        return $bool;
-    }
+
 
     public function getComparitor()
     {
         return $this->comparitor;
     }
 
-    public function setComparitor($comparitor)
+    public function addComparitor(BitWord $item)
     {
-        $this->comparitor = $comparitor;
+        $this->comparitor[] = $item;
+    }
+
+    public function resetComparitor()
+    {
+        $this->comparitor = array();
     }
 
 }
